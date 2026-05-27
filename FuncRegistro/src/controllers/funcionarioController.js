@@ -30,3 +30,13 @@ export const atualizarFuncionario = (req, res) => {
         res.json({ message: 'Funcionário atualizado com sucesso' });
     });
 };
+
+export const deletarFuncionario = (req, res) => {
+    
+    const { id } = req.params;  
+
+    db.query('DELETE FROM funcionarios WHERE id = ?', [id], err => {
+        if(err) return res.status(500).json({ error: 'Erro ao deletar funcionário' });
+        res.json({ message: 'Funcionário deletado com sucesso' });
+    });
+};  
