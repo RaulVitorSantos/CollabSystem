@@ -38,3 +38,30 @@ async function listarFuncionarios() {
 document.getElementById('form-funcionario').addEventListener('submit', async (e) => {
 
     e.preventDefault();
+
+    const id = document.getElementById('id').value;
+    const nome = document.getElementById('nome').value;
+    const cargo = document.getElementById('cargo').value;
+    const salario = document.getElementById('salario').value;
+
+    const funcionario = { nome, cargo, salario };
+
+    if (id) {
+        await fetch(`${API_URL}/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(funcionario)
+        });
+
+    } else {
+        await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(funcionario)
+        });
+    }   
+
+e.target.reset();
+document.getElementById('id').value = '';
+listarFuncionarios();
+});
