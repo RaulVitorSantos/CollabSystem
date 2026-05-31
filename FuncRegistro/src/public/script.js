@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000/api/funcionarios';
+const API = 'http://localhost:3000/funcionarios';
 
 const avatarColors = [
     ['#1a56db','#3b82f6'],
