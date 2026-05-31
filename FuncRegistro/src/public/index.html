@@ -1,25 +1,132 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Funcionários</title>
-    <link rel="stylesheet" href="styles.css">   
+    <title>CollabSystem — Funcionários</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
 
-    <main class="container">
-       header>
-            <h1>Sistema de Registro de Funcionários</h1>
-        </header>   
+    <header class="hdr">
+        <div class="hi">
+            <div class="logo">
+                <div class="logo-icon"><i class="ti ti-clipboard-list"></i></div>
+                <div>
+                    <div class="logo-txt">Collab<span>System</span></div>
+                    <span class="logo-sub">Cadastre · Organize · Colabore</span>
+                </div>
+            </div>
+            <div class="hdr-right">
+                <div class="hdr-dot"></div>
+                <span class="hdr-badge">online</span>
+            </div>
+        </div>
+    </header>
 
-        <section class = "form-section">
-            <h2>Cadastrar / Atualizar Funcionário</h2>
-            <form id = "FuncionarioForm">
-                <input type="hidden" id="funcionarioId">
-                <div class="form-group
+    <div class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <h1>Gestão de Funcionários</h1>
+                <p>Cadastre · Organize · Colabore</p>
+            </div>
+            <div class="hero-stats">
+                <div class="hs">
+                    <div class="hs-val" id="s-total">0</div>
+                    <div class="hs-lbl">funcionários</div>
+                </div>
+                <div class="hs">
+                    <div class="hs-val" id="s-media" style="color:#a5f3fc">R$0</div>
+                    <div class="hs-lbl">média salarial</div>
+                </div>
+                <div class="hs">
+                    <div class="hs-val" id="s-cargos" style="color:#93c5fd">0</div>
+                    <div class="hs-lbl">cargos</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    >
-    
-      
+    <main class="main">
+
+        <section class="card fc" id="form-card">
+            <div class="card-hd">
+                <div class="card-hd-left">
+                    <span class="card-tag"><span class="tag-bar"></span> formulário</span>
+                    <h2 class="card-ttl" id="form-title">Novo funcionário</h2>
+                </div>
+                <div class="card-ico"><i class="ti ti-user-plus"></i></div>
+            </div>
+            <div class="card-body">
+                <form id="form-func">
+                    <input type="hidden" id="fid">
+                    <div class="fg">
+                        <div class="fld full">
+                            <label><i class="ti ti-user"></i> Nome completo</label>
+                            <input id="fnome" type="text" placeholder="Ex: Ana Paula Souza" required>
+                        </div>
+                        <div class="fld">
+                            <label><i class="ti ti-briefcase"></i> Cargo</label>
+                            <input id="fcargo" type="text" placeholder="Ex: Analista" required>
+                        </div>
+                        <div class="fld">
+                            <label><i class="ti ti-currency-dollar"></i> Salário</label>
+                            <input id="fsal" type="number" placeholder="0,00" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                    <div class="fa">
+                        <button type="submit" class="btn bp" id="btn-sub">
+                            <i class="ti ti-plus"></i> Cadastrar
+                        </button>
+                        <button type="button" class="btn bg2" id="btn-can" style="display:none" onclick="cancelar()">
+                            <i class="ti ti-x"></i> Cancelar
+                        </button>
+                    </div>
+                </form>
+                <div id="toast" class="toast"></div>
+            </div>
+        </section>
+
+        <section class="card tc">
+            <div class="card-hd">
+                <div class="card-hd-left">
+                    <span class="card-tag teal-tag"><span class="tag-bar teal-bar"></span> registros</span>
+                    <h2 class="card-ttl">Funcionários</h2>
+                </div>
+                <div class="card-ico teal-ico"><i class="ti ti-users"></i></div>
+            </div>
+            <div class="tw">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Salário</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <tr class="er-row" id="empty-row">
+                            <td colspan="5">
+                                <div class="emp">
+                                    <div class="emp-ico"><i class="ti ti-users"></i></div>
+                                    <span>Nenhum funcionário cadastrado ainda</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="slogan">cadastre · organize · colabore — um lugar para cadastrar funcionários</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
